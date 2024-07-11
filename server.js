@@ -8,10 +8,8 @@ connectDb();
 
 app.use(
   cors({
-    origin: [
-      "https://jobify-frontend-inky.vercel.app",
-      "http://localhost:3000",
-    ],
+    origin: ["https://jobify-frontend-inky.vercel.app"],
+    // Update with your Vercel domain
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
