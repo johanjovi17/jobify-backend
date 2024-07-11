@@ -68,4 +68,39 @@ const deleteJob = asyncHandler(async (req, res) => {
   res.status(200).json("Job deleted successfully");
 });
 
-module.exports = { getJobs, createJob, editJob, getJob, deleteJob };
+//@desc get a job lec
+//@route GET /api/jobs/:id/materials
+//@access public
+const getJobLecture = asyncHandler(async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id);
+    res.json(job.materials);
+  } catch (err) {
+    res.status(500).send("Server error");
+  }
+});
+//@desc create a job lec
+//@route POST /api/jobs/:id/materials
+//@access public
+const createJobLecture = asyncHandler(async (req, res) => {
+  try {
+    const { title, description, url } = req.body;
+    const job = await Job.findById(req.params.id);
+    const newMaterial = { title, description, url };
+    job.materials.push(newMaterial);
+    await job.save();
+    res.json(newMaterial);
+  } catch (err) {
+    res.status(500).send("Server error");
+  }
+});
+
+module.exports = {
+  getJobs,
+  createJob,
+  editJob,
+  getJob,
+  deleteJob,
+  getJobLecture,
+  createJobLecture,
+};

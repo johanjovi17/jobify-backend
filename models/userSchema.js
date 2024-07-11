@@ -19,6 +19,18 @@ const userSchema = new mongoose.Schema({
     enum: ["user", "employer"],
     default: "user",
   },
+  experience: {
+    type: String,
+  },
+  age: {
+    type: String,
+  },
+  location: {
+    type: String,
+  },
+  bio: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);

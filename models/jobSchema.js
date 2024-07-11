@@ -39,6 +39,13 @@ const jobSchema = mongoose.Schema({
       required: [true, "This field is required!"],
     },
   },
+  materials: [
+    {
+      title: String,
+      description: String,
+      url: String,
+    },
+  ],
 });
 
 module.exports = mongoose.model("Job", jobSchema);
